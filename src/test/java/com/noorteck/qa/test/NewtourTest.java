@@ -1,6 +1,8 @@
 
 package com.noorteck.qa.test;
 
+import org.testng.asserts.SoftAssert;
+
 import com.noorteck.qa.utils.CommonUI;
 import com.noorteck.qa.utils.ObjInitialize;
 
@@ -30,14 +32,29 @@ public class NewtourTest extends ObjInitialize {
 		
 		}
 	
-	public void NewtourTestOne() {
+	public static void NewtourTestOne() {
 		
 		homeObj.clickSignOn();
 		signOnObj.enterUserName("123456");
 		signOnObj.enterPassword("123456");
 		signOnObj.clickSubmit();
 		homeObj.LoginSuccess();
+		
+		String expectedM="Login Successfully";
+		String actualM=homeObj.LoginSuccess();
+		
+		SoftAssert softAssert= new SoftAssert();
+		softAssert.assertEquals(expectedM, actualM);
+		softAssert.assertAll();
+		
 		homeObj.ThankYou();
+		
+		String expectMSG="Thank you for Loggin.";
+		String actMSG=homeObj.ThankYou();
+		
+		SoftAssert softAssert2= new SoftAssert();
+		softAssert2.assertEquals(expectMSG, actMSG);
+		softAssert2.assertAll();
 			
 	}
 	
@@ -57,7 +74,16 @@ public class NewtourTest extends ObjInitialize {
 		registerObj.enterPassword("123456");
 		registerObj.enterConfirmPW("123456");
 		registerObj.clickSubmitBTN();
+		registerObj.getRegister();
+		
 		//verify "Thank you for registering"
+		//String expectedMessage="Thank you for registering";
+		//String actualMessage=registerObj.getRegister();
+		
+		//SoftAssert softAssert= new SoftAssert();
+		//softAssert.assertEquals(expectedMessage, actualMessage);
+		//softAssert.assertAll();
+		
 	}
 	 public void NewtourTestThree() {
 		 
@@ -74,6 +100,12 @@ public class NewtourTest extends ObjInitialize {
 		 flightsObj.continueSubmit();
 		 flightsObj.message();
 		 
+		 String expMSG="After flight finder - No Seats Avaialble  ";
+		 String actMSG=flightsObj.message();
+			
+			SoftAssert softAssert3= new SoftAssert();
+			softAssert3.assertEquals(expMSG, actMSG);
+			softAssert3.assertAll();
 	 }
 }
 

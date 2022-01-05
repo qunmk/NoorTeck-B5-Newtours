@@ -46,6 +46,9 @@ public class RegisterPage extends CommonUI {
 
 	@FindBy(xpath = "//*[@name='submit']")
 	WebElement clickSubmit;
+	
+	@FindBy(xpath="//*[@size='2']")
+	WebElement 	registerThanks;
 
 	public RegisterPage() {
 		PageFactory.initElements(driver, this);
@@ -104,6 +107,10 @@ public class RegisterPage extends CommonUI {
 
 	public void clickSubmitBTN() {
 		click(clickSubmit);
+	}
+	
+	public String getRegister() {
+		return getText(registerThanks);
 	}
 
 }
