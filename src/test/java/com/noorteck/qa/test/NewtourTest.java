@@ -10,25 +10,20 @@ public class NewtourTest extends ObjInitialize {
 
 	public static void main(String[] args) {
 	
-		String url="http://demo.guru99.com/test/newtours/";
+		String url="https://demo.guru99.com/test/newtours/";
 		
-		CommonUI commonUIObj=new CommonUI();
+		CommonUI.openBrowser("chorme");
 		
-		commonUIObj.openBrowser("chorme");
+		CommonUI.navigate(url);
 		
-		commonUIObj.navigate(url);
+		initializeClassObj();
 		
-		ObjInitialize obj=new ObjInitialize();
 		
-		obj.initializeClassObj();
+		NewtourTestOne();
+		NewtourTestTwo();
+		NewtourTestThree();
 		
-		NewtourTest testObj=new NewtourTest();
-		
-		testObj.NewtourTestOne();
-		testObj.NewtourTestTwo();
-		testObj.NewtourTestThree();
-		
-		commonUIObj.quitBrowser();
+		CommonUI.quitBrowser();
 		
 		}
 	
@@ -58,7 +53,7 @@ public class NewtourTest extends ObjInitialize {
 			
 	}
 	
-	public void NewtourTestTwo() {
+	public static void NewtourTestTwo() {
 		
 		homeObj.clickRegister();
 		registerObj.enterFirstName("John");
@@ -85,7 +80,7 @@ public class NewtourTest extends ObjInitialize {
 		//softAssert.assertAll();
 		
 	}
-	 public void NewtourTestThree() {
+	 public static void NewtourTestThree() {
 		 
 		 homeObj.clickFlights();
 		 flightsObj.OnewayRadio();
